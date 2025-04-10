@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { PaperProvider,Icon, Button,TextInput,Checkbox } from 'react-native-paper';
-import { router } from 'expo-router';
-
+import { Text, View } from 'react-native'
+import {Button,TextInput,Checkbox } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
 import { Image } from 'expo-image';
 import { Formik } from 'formik';
@@ -9,6 +8,7 @@ import React from 'react'
 
 const Login =()=>{
 
+  const router = useRouter();
     const [checked, setChecked] = React.useState(false);
   
     return(
