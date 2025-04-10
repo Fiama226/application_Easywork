@@ -65,7 +65,7 @@ const Login =()=>{
   
   
            </View>
-           <Button mode="contained" onPress={() => router.navigate('/HomePage')}style={{width:"70%",alignSelf:"center",marginTop:20}}>
+           <Button mode="contained" onPress={() => router.navigate('/Mainpage')}style={{width:"70%",alignSelf:"center",marginTop:20}}>
             <Text> Se connecter</Text>
     </Button>
 

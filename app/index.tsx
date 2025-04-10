@@ -4,10 +4,9 @@ import { router } from 'expo-router';
 import React, { Component } from "react";
 import { Image } from 'expo-image';
 import { Formik,Field } from 'formik';
-import CustomInput from './CustomInput';
 
 
-import { PaperProvider,Icon, Button,TextInput,Checkbox } from 'react-native-paper';
+import { PaperProvider,Icon, Button,} from 'react-native-paper';
 
 import { BottomNavigation } from 'react-native-paper';
 
@@ -186,7 +185,7 @@ const WelcomePage=()=>{
           <Text style={{textAlign:"center",marginTop:20,marginBottom:20}}>
             Plomberie , maconnerie et il est la Plomberie,macconnerie,menuiserie fort Plomberie, maconnerie,
           </Text>
-          <Button style={{borderRadius:10,width:"75%",alignSelf:"center",backgroundColor:"white"}} mode="contained"  onPress={() =>{ router.navigate('Screen/Login')
+          <Button style={{borderRadius:10,width:"75%",alignSelf:"center",backgroundColor:"white"}} mode="contained"  onPress={() =>{ router.navigate('./Screen/Login')
                 console.log("hi, i am pressed")}
 
           }><Text style={{color:"black",fontWeight:"bold"}}>Commencer</Text></Button>
@@ -220,39 +219,7 @@ export default function Index() {
   });
   return (
     <PaperProvider> 
- {/* <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
-    */}
-
-{/* <View style={{alignSelf:"center",width:"100%", height:"100%",justifyContent:"center",alignContent:"center",backgroundColor:"blue"}}  >
-  <View>
-  <Image source={require('../publics/icons/Brand_logo.png')} style={{width:"50%",height:"50%",alignSelf:"center"}} contentFit="contain" />
-  </View>
-<View>
-  <Text style={{alignSelf:"center",width:"75%",marginBottom:25 }}> Plomberie maconnerie menuiserie et il est la Plomberie, maconnerie, menuiserie fort Plomberie, maconnerie</Text>
-
-  <DotIndicator color='white' style={{marginBottom:25 }} />
-  <Button style={{borderRadius:10,width:"75%",alignSelf:"center"}} mode="contained" onPress={() => console.log('Pressed')}>Commencer</Button>
-
-</View>
-  
-
-</View> 
-
-*/
-}
-
-
-
-
 <WelcomePage />
-
-
-
-
     </PaperProvider>
   );
 }

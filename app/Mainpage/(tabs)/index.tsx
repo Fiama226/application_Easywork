@@ -4,14 +4,6 @@ import {Picker} from "@react-native-picker/picker";
 import { PaperProvider,Icon, Button,TextInput,Checkbox } from 'react-native-paper';
 import { Text, View,FlatList,SectionList, ScrollView} from "react-native";
 import { Image } from 'expo-image';
-import { BottomNavigation } from 'react-native-paper';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Profile from './Screen/Profile';
-
-
-
-
-
 
 const PickCityComponent=()=>{
     const [Enable , setEnable]  = React.useState("choisir sa ville");
@@ -73,7 +65,7 @@ const PickCityComponent=()=>{
       <ScrollView style={{ flex: 1 }}>
         <View style={{backgroundColor:"#2596be",width:"100%",justifyContent:"center"}}>
         <View style={{width:"80%",display:"flex",flexDirection:"row",margin:15,alignSelf:"center"}} >
-         <Image source={require('../publics/icons/Brand_logo.png')} style={{width:100,height:50}} contentFit="contain" />
+         <Image source={require('./Brand_logo.png')} style={{width:100,height:50}} contentFit="contain" />
          <View style={{right:1,position:"absolute"}}>
         <Icon source="bell"  size={46}/> 
         </View>
@@ -136,40 +128,14 @@ const PickCityComponent=()=>{
     )
   } 
   
-  const Rechercher = () =><View style={{width:"100%",height:"100%",justifyContent:"center"}}><Text style={{textAlign:"center",textAlignVertical:"center",fontSize:20,fontWeight:"bold"}}>Hi👋☺️ , i am the Rechercher page  </Text></View>;
-  
-  const Demander = () => <View style={{width:"100%",height:"100%",justifyContent:"center"}}><Text style={{textAlign:"center",textAlignVertical:"center",fontSize:20,fontWeight:"bold"}}>Hi👋☺️ , i am the Demander page  </Text></View>;
-  
 
 
 const HomePage = () => {
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
-      { key: 'Acceuil', title: 'Acceuil', focusedIcon: 'home-circle', unfocusedIcon: 'home-circle'},
-      { key: 'Rechercher', title: 'Rechercher', focusedIcon: 'card-search-outline' },
-      { key: 'Demander', title: 'Demander', focusedIcon: 'plus-circle' },
-      { key: 'Profile', title: 'Profile', focusedIcon: 'account-circle-outline', unfocusedIcon: 'account-circle-outline' },
-    ]);
-  
-  
-  
-  
-    const renderScene = BottomNavigation.SceneMap({
-      Acceuil: AcceuileComponent,
-      Rechercher: Rechercher,
-      Demander: Demander,
-      Profile: Profile,
-    });
-  
-
   return (
     <>
     <PaperProvider> 
-     <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
+      <AcceuileComponent/>
+
 
     </PaperProvider>
   
