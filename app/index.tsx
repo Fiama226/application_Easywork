@@ -3,8 +3,6 @@ import { Pressable } from "react-native";
 import { router } from 'expo-router';
 import React, { Component } from "react";
 import { Image } from 'expo-image';
-import Dots from "react-activity/dist/Dots";
-import "react-activity/dist/library.css";
 import { Formik,Field } from 'formik';
 import CustomInput from './CustomInput';
 
