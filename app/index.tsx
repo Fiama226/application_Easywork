@@ -1,13 +1,25 @@
-import { Text, View,FlatList,SectionList, ScrollView } from "react-native";
+import { Text, View,FlatList, ScrollView } from "react-native";
+import { Pressable } from "react-native";
+import { router } from 'expo-router';
+import React, { Component } from "react";
 import { Image } from 'expo-image';
+import Dots from "react-activity/dist/Dots";
+import "react-activity/dist/library.css";
+import { Formik,Field } from 'formik';
+import CustomInput from './CustomInput';
 
-import React from "react";
-import { PaperProvider,Icon, Button } from 'react-native-paper';
+
+import { PaperProvider,Icon, Button,TextInput,Checkbox } from 'react-native-paper';
 
 import { BottomNavigation } from 'react-native-paper';
 
-import AcceuilleIcon from "./iconscomponents/AcceuilleIcon";
-import SearchIcon from "./iconscomponents/SearchIcon";
+import Animated, {useSharedValue, useAnimatedStyle, withSpring,FadeIn, FadeOut } from 'react-native-reanimated';
+
+
+
+
+
+
 import { Searchbar } from 'react-native-paper';
 import {Picker} from "@react-native-picker/picker";
 
@@ -140,6 +152,54 @@ const Profile = () =><View style={{width:"100%",height:"100%",justifyContent:"ce
 
 
 
+
+
+const WelcomePage=()=>{
+  const [visible, setVisible] = React.useState(false);
+  const [disable, setDisable] = React.useState (false);
+  const translateX = useSharedValue<number>(0);
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateY: withSpring(translateX.value) }],
+  }));
+  const handlePress = () => {
+    console.log("hi, i am pressed")
+    translateX.value -= 100;
+    setVisible(!visible);
+    setDisable(!disable);
+  };
+
+  return(
+
+  <Pressable  style={{width:"100%",height:"100%",backgroundColor:"#0076ac",justifyContent:"center",alignContent:"center"}} onPress={handlePress} disabled={disable} >
+    <Animated.View style={[{height: "70%",
+    alignSelf:"center",
+    width: "70%",
+    borderRadius: 20,
+    marginVertical: 50,}, animatedStyles]}>
+     <Image source={require('../publics/icons/Brand_logo.png')} style={{width:"100%",height:"100%",alignSelf:"center",paddingBottom:0}} contentFit="contain" />
+     </Animated.View>   
+
+     {visible && (
+        <Animated.View
+        style={{width:"100%",height:"25%",marginBottom:200}}
+          entering={FadeIn.duration(800)}
+          exiting={FadeOut.duration(300)}
+        >
+          <Text style={{textAlign:"center",marginTop:20,marginBottom:20}}>
+            Plomberie , maconnerie et il est la Plomberie,macconnerie,menuiserie fort Plomberie, maconnerie,
+          </Text>
+          <Button style={{borderRadius:10,width:"75%",alignSelf:"center",backgroundColor:"white"}} mode="contained"  onPress={() =>{ router.navigate('Screen/Login')
+                console.log("hi, i am pressed")}
+
+          }><Text style={{color:"black",fontWeight:"bold"}}>Commencer</Text></Button>
+        </Animated.View>
+      )}     
+  </Pressable>
+  )
+}
+
+
+
 export default function Index() {
 
   const [index, setIndex] = React.useState(0);
@@ -153,6 +213,7 @@ export default function Index() {
 
 
 
+
   const renderScene = BottomNavigation.SceneMap({
     Acceuil: AcceuileComponent,
     Rechercher: Rechercher,
@@ -161,11 +222,38 @@ export default function Index() {
   });
   return (
     <PaperProvider> 
-  <BottomNavigation
+ {/* <BottomNavigation
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
     />
+    */}
+
+{/* <View style={{alignSelf:"center",width:"100%", height:"100%",justifyContent:"center",alignContent:"center",backgroundColor:"blue"}}  >
+  <View>
+  <Image source={require('../publics/icons/Brand_logo.png')} style={{width:"50%",height:"50%",alignSelf:"center"}} contentFit="contain" />
+  </View>
+<View>
+  <Text style={{alignSelf:"center",width:"75%",marginBottom:25 }}> Plomberie maconnerie menuiserie et il est la Plomberie, maconnerie, menuiserie fort Plomberie, maconnerie</Text>
+
+  <DotIndicator color='white' style={{marginBottom:25 }} />
+  <Button style={{borderRadius:10,width:"75%",alignSelf:"center"}} mode="contained" onPress={() => console.log('Pressed')}>Commencer</Button>
+
+</View>
+  
+
+</View> 
+
+*/
+}
+
+
+
+
+<WelcomePage />
+
+
+
 
     </PaperProvider>
   );
